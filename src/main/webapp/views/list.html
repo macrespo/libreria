@@ -1,0 +1,67 @@
+<h3>Librería</h3>
+
+<div class="control">
+	<label for="palabra">Buscar</label>
+    <input id="palabra" ng-model="palabra"/>
+    <button ng-click="search()">Aplicar</button>
+</div>
+
+<table>
+	<tr>
+		<th></th>
+		<th>Nombre</th>
+		<th>Autor</th>
+	</tr>
+	<tr ng-repeat="item in list">
+		<td>
+			<input type="checkbox" ng-checked="selected.libro == item.id" ng-click="select(item.id)" />
+		</td>
+		<td>
+		    <span>{{item.nombre}}</span>
+		</td>
+		<td>
+		    <span>{{item.autor}}</span>
+		</td>
+	</tr>
+</table>
+
+<h4>Libro seleccionado</h4>
+<div>
+	<button ng-disabled="!selected.libro" ng-click="viewSelected()">Mostrar</button>
+	<button ng-disabled="!selected.libro" ng-click="delSelected()">Elimninar</button>
+</div>
+
+<h3>Formulario "Nuevo Libro"</h3>
+<form  name="form" ng-submit="save()" novalidate>
+    <div class="control">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" ng-model="nuevo.nombre" name="nombre" required/>
+		<div ng-show="form.nombre.$touched">
+			<div ng-show="form.nombre.$error.required">El Nombre no puede quedar vacío</div>
+		</div>
+    </div>
+    <div class="control">
+        <label for="autor">Autor</label>
+        <input id="autor" ng-model="nuevo.autor" name="autor" required/>
+		<div ng-show="form.autor.$touched">
+			<div ng-show="form.autor.$error.required">El Autor no puede quedar vacío</div>
+		</div>
+    </div>
+    <div class="control">
+        <label for="anioPublicacion">Año de publicación</label>
+        <input type="number" id="anioPublicacion" ng-model="nuevo.anioPublicacion" name="anio" required/>
+		<div ng-show="form.anio.$touched">
+			<div ng-show="form.anio.$error.required">Debe indicar el Año de publicación</div>
+		</div>
+    </div>
+    <div class="control">
+        <label for="genero">Género</label>
+        <input id="genero" ng-model="nuevo.genero" name="genero" required/>
+		<div ng-show="form.genero.$touched">
+			<div ng-show="form.genero.$error.required">Debe indicar un Género</div>
+		</div>
+    </div>
+    <div class="buttons">
+    	<button type="submit" ng-disabled="form.$invalid">Añadir libro</button>
+    </div>
+</form>

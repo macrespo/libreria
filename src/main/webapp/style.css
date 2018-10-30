@@ -1,0 +1,25 @@
+table {
+	width: 100%;
+	text-align: left;
+	margin-top: 20px;
+}
+
+.control {
+	margin-bottom: 10px;
+}
+
+.control label {
+	display: block;
+}
+
+.control input {
+	min-width: 200px;
+}
+
+.control h4:first-of-type {
+	font-weight: 400;
+}
+
+form .buttons {
+	padding-top: 10px;
+}
